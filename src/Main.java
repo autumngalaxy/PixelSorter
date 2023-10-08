@@ -28,7 +28,7 @@ public class Main {
     public static void main(String[] args) {
         try {
             /*LOADING BLOCK*/
-            File imagePath = new File("src/phonePhotos/IMG_1932.png");
+            File imagePath = new File("src/phonePhotos/testImage.png");
             bufferedImage = ImageIO.read(imagePath);
 
             loadImage(bufferedImage);
@@ -123,6 +123,37 @@ public class Main {
         for(int i = 0; i < intArray.length;i++){
             for(int j = 0; j < intArray[i].length; j++){
                 intArray[i][j] = 0;
+            }
+        }
+    }
+    static void findSublists(int[][] array){
+        /* implement finding the start of sublists
+         * The start of the sublist is index j, where intArray[i][j] = the length of the sublist
+         * All parts of the sublist other than the start have a value of -1
+         * All other indices are = 0 */
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                if (calculateThreshold(imageArray[i][j])) {
+
+                    int tempIndex = j; //stores starting index of the sublist
+                    boolean thresholdCont = true;
+
+                    while (thresholdCont) {
+                        if (j >= array[i].length - 1) {
+                            thresholdCont = false;
+                            //System.out.println("Got here");
+                        }
+                        j++;
+                        if (thresholdCont && calculateThreshold(imageArray[i][j])) {
+                            array[i][j] = -1;
+                        } else {
+                            thresholdCont = false;
+                        }
+                    }
+                    //System.out.println("Storing index " + tempIndex + " a value of " + (j - tempIndex));
+
+                    array[i][tempIndex] = j; //- tempIndex;
+                }
             }
         }
     }
@@ -360,42 +391,6 @@ public class Main {
         if(inverted)
             return !result;
         return result;
-    }
-
-
-
-
-
-    static void findSublists(int[][] array){
-        /* implement finding the start of sublists
-         * The start of the sublist is index j, where intArray[i][j] = the length of the sublist
-         * All parts of the sublist other than the start have a value of -1
-         * All other indices are = 0 */
-            for (int i = 0; i < array.length; i++) {
-                for (int j = 0; j < array[i].length; j++) {
-                    if (calculateThreshold(imageArray[i][j])) {
-
-                        int tempIndex = j; //stores starting index of the sublist
-                        boolean thresholdCont = true;
-
-                        while (thresholdCont) {
-                            if (j >= array[i].length - 1) {
-                                thresholdCont = false;
-                                //System.out.println("Got here");
-                            }
-                            j++;
-                            if (thresholdCont && calculateThreshold(imageArray[i][j])) {
-                                array[i][j] = -1;
-                            } else {
-                                thresholdCont = false;
-                            }
-                        }
-                        //System.out.println("Storing index " + tempIndex + " a value of " + (j - tempIndex));
-
-                        array[i][tempIndex] = j; //- tempIndex;
-                    }
-                }
-            }
     }
 
     static boolean calculateThreshold(Color a){
