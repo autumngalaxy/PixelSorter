@@ -28,7 +28,7 @@ public class Main {
     public static void main(String[] args) {
         try {
             /*LOADING BLOCK*/
-            File imagePath = new File("src/phonePhotos/testImage.png");
+            File imagePath = new File("src/testImage.png");
             bufferedImage = ImageIO.read(imagePath);
 
             loadImage(bufferedImage);
