@@ -1,6 +1,6 @@
 # PixelSorter
 ## Inspiration
-Around early September 2023 I came across [a video by the youtuber Acerola](https://youtu.be/HMmmBDRy-jE?si=_dGWNU1vgg7iZf5r) about pixel sorters. 
+Around early September 2023, I came across [a video by the youtuber Acerola](https://youtu.be/HMmmBDRy-jE?si=_dGWNU1vgg7iZf5r) about pixel sorters. 
 It intrigued me, and over the next coming days I worked on my own implementation of the technique.
 
 ## Features
@@ -26,4 +26,5 @@ It intrigued me, and over the next coming days I worked on my own implementation
 3. Change the file path on line 31 to the file path of the image to sort.
    * Supports JPEG, PNG, and GIF file formats. 
    * By default files are outputted in the /src/ folder with the title "final.png".
+     * To change, the output filepath is found in the function printImage().
 4. Run the program.
