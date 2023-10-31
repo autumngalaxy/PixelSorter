@@ -64,8 +64,17 @@ public class Main {
             }
             System.out.println("Sorted!");
 
-            /*ENDING BLOCK*/
+            /*ENDING / DEBUG BLOCK*/
+            // Fills in every sublist with black
             //debugBlackTest();
+
+            // Fills in every sublist with a random color
+            /*for(int i = 0; i < intArray.length; i++){
+                for(int j = 0; j < intArray[i].length; j++){
+                    if(intArray[i][j] > 0)
+                        fillInColorsDebug(imageArray[i], j, intArray[i][j] - 1);
+                }
+            }*/
             printImage(imageArray);
 
 
@@ -396,7 +405,7 @@ public class Main {
     static boolean calculateThreshold(Color a){
         boolean result = false;
 
-        if(invertThresholds){
+        if(invertThresholds){ //If the user has inverted the threshold values
             switch(sortType){
                 case 0:
                     if(calculateLuminosity(a) < thresholdLower || calculateLuminosity(a) > thresholdUpper){
@@ -409,7 +418,7 @@ public class Main {
                     }
                     break;
                 case 2:
-                    if(calculateHue(a) < thresholdLower * 360 || calculateHue(a) > thresholdUpper * 442){
+                    if(calculateHue(a) < thresholdLower * 360 || calculateHue(a) > thresholdUpper * 360){
                         result = true;
                     }
                     break;
@@ -439,7 +448,7 @@ public class Main {
         }
 
 
-        switch(sortType){
+        switch(sortType){ //Normal operation
             case 0:
                 if(calculateLuminosity(a) > thresholdLower && calculateLuminosity(a) < thresholdUpper){
                     result = true;
@@ -451,7 +460,7 @@ public class Main {
                 }
                 break;
             case 2:
-                if(calculateHue(a) > thresholdLower * 360 && calculateHue(a) < thresholdUpper * 442){
+                if(calculateHue(a) > thresholdLower * 360 && calculateHue(a) < thresholdUpper * 360){
                     result = true;
                 }
                 break;
